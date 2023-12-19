@@ -5,9 +5,10 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  FlatList,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -16,6 +17,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { LogBox } from 'react-native';
 
 import {
   Colors,
@@ -56,7 +58,72 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 }
 
 function App(): React.JSX.Element {
+  useEffect(()=>{
+    // LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+  },[])
   const isDarkMode = useColorScheme() === 'dark';
+  const DATA = [
+    {
+      id:1,
+      name:"Nad",
+      
+
+    },
+    {
+      id:2,
+      name:"Nad",
+      
+
+    },
+    {
+      id:3,
+      name:"Nad",
+      
+
+    },
+    {
+      id:4,
+      name:"Nad",
+      
+
+    },
+    {
+      id:5,
+      name:"Nad",
+      
+
+    },
+    {
+      id:6,
+      name:"Nad",
+      
+
+    },
+    {
+      id:7,
+      name:"Nad",
+      
+
+    },
+    {
+      id:8,
+      name:"Nad",
+      
+
+    },
+    {
+      id:9,
+      name:"Nad 9",
+      
+
+    },
+    {
+      id:10,
+      name:"Nad 10",
+      
+
+    },
+  ]
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -68,30 +135,19 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+     <Text style={{color:"green",textAlign:"center",fontSize:20,justifyContent:"center",alignItems:"center",margin:12,padding:12,lineHeight:30}}>
+      Congrtation nadeem today you successfully setup the projectMd Khan Sahab  Nadeem Anwar project is running on iso device and from today  i will creata project on mac book pro max developer
+      </Text>
+
+<ScrollView>
+      <FlatList
+      style={{margin:12,padding:12}}
+      data={DATA}
+      renderItem={({item})=><Text style={{borderWidth:1,marginVertical:12,padding:12,borderRadius:10,color:"green",fontSize:18,borderColor:"green",textAlign:"center"}}>{item.name}</Text>}
+      // keyExtractor={(item)=>item.id}
+      />
+</ScrollView>
+
     </SafeAreaView>
   );
 }
